@@ -2,7 +2,29 @@
 words.hero=['Оснащаем образование будущего','Kelajak ta’limini jihozlaymiz'];
 words.intro=['Современное учебное и лабораторное оборудование для школ, колледжей, университетов и образовательных центров.','Maktablar, kollejlar, universitetlar va ta’lim markazlari uchun zamonaviy o‘quv va laboratoriya jihozlari.'];
 const updateNavBeforeIcons=updateNav;
-updateNav=function(){updateNavBeforeIcons();$('#cart-link').innerHTML=cartSVG+`<span>${t('cart')} · ${state.cart.length}</span>`};
+updateNav=function(){
+  updateNavBeforeIcons();
+  
+  const catalogBtn=$('#catalog-link');
+  if(catalogBtn){
+    catalogBtn.innerHTML=`<span class="nav-ico"><svg viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg></span><span>${t('catalog')}</span>`;
+  }
+  
+  const aboutBtn=$('#about-link');
+  if(aboutBtn){
+    aboutBtn.innerHTML=`<span class="nav-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span><span>${t('about')}</span>`;
+  }
+  
+  const guideBtn=$('#guide-link');
+  if(guideBtn){
+    guideBtn.innerHTML=`<span class="nav-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><span>${state.lang==='uz'?'Qanday buyurtma beriladi':'Как заказать'}</span>`;
+  }
+
+  const cartBtn=$('#cart-link');
+  if(cartBtn){
+    cartBtn.innerHTML=`<span class="cart-btn-inner">${cartSVG}<span>${t('cart')}</span><span class="cart-badge-pill">${state.cart.length}</span></span>`;
+  }
+};
 const renderResultsBeforeTable=renderResults;
 renderResults=function(){renderResultsBeforeTable();if(state.view!=='list')return;const grid=$('#results .grid');if(!grid)return;const ids=[...grid.querySelectorAll('[data-add]')].map(button=>button.dataset.add);const container=document.createElement('div');container.className='customer-table-wrap';container.innerHTML=`<table class="customer-table"><thead><tr><th>${t('photo')}</th><th>${t('product')}</th><th>${t('price')}</th><th></th></tr></thead><tbody>${ids.map(id=>{const p=byId.get(id);return `<tr><td><button class="table-photo" data-detail="${esc(id)}" aria-label="${t('details')}">${image(p)}</button></td><td><button class="table-title" data-detail="${esc(id)}">${esc(field(p,'name'))}</button><small>${t('article')}: ${esc(id)} · ${esc(field(p,'unit'))}</small><small>${esc(field(p,'direction'))}</small></td><td class="table-price">${price(p)}</td><td><button class="primary" data-add="${esc(id)}" aria-label="${t('add')}" title="${t('add')}">${cartSVG}</button></td></tr>`}).join('')}</tbody></table>`;grid.replaceWith(container)};
 const iconsMap={

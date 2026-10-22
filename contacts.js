@@ -18,8 +18,53 @@ Object.assign(words,{
 state.customer.organization='';state.customer.email='';
 const companyTelegram='https://t.me/NPOELXOLDING';
 const companyInstagram='https://www.instagram.com/elxolding/';
+const companyWebsite='https://elxolding.uz/';
 const companyLocation='https://www.google.com/maps/place/ELXOLDING/@39.674017,66.934739,18z/data=!4m6!3m5!1s0x3f4d191024db16c5:0x1fea7e4da9a8531a!8m2!3d39.6740171!4d66.9347393!16s%2Fg%2F11g6z1qtr2?hl=ru&entry=ttu&g_ep=EgoyMDI2MTAxOS4wIKXMDSoASAFQAw%3D%3D';
-function renderContacts(){const footer=$('#site-footer');if(!footer)return;footer.innerHTML=`<div class="footer-company"><strong>ELXOLDING SMART CATALOG</strong><p>${state.lang==='uz'?'Ta’lim uchun jihozlar':'Оборудование для образования'}</p></div><div class="footer-contacts"><strong>${t('contactTitle')}</strong><a href="tel:+998937200605">+998 93 720 06 05</a><a href="tel:+998933305000">+998 93 330 50 00</a><a href="${companyTelegram}" target="_blank" rel="noopener noreferrer">Telegram · @NPOELXOLDING ↗</a><a href="${companyInstagram}" target="_blank" rel="noopener noreferrer">Instagram · @elxolding ↗</a></div><div class="footer-address"><strong>${t('addressTitle')}</strong><p>${esc(t('address'))}</p><a class="footer-map-link" href="${companyLocation}" target="_blank" rel="noopener noreferrer">📍 ${state.lang==='uz'?'Google xaritada ko‘rish ↗':'Посмотреть на карте Google ↗'}</a><button class="primary" data-go="cart">${t('sendManager')}</button></div>`}
+function renderContacts(){
+  const footer=$('#site-footer');
+  if(!footer)return;
+  footer.innerHTML=`
+    <div class="footer-col footer-brand-col">
+      <div class="footer-title">ELXOLDING SMART CATALOG</div>
+      <p class="footer-desc">${state.lang==='uz'?'Ta’lim uchun jihozlar · 1988-yildan buyon ishonchli hamkor':'Оборудование для образования · Надежный производитель с 1988 года'}</p>
+      <a class="contact-link web-link" href="${companyWebsite}" target="_blank" rel="noopener noreferrer">
+        <span class="contact-ico web-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+        <span>elxolding.uz ↗</span>
+      </a>
+    </div>
+
+    <div class="footer-col footer-contacts-col">
+      <div class="footer-title">${t('contactTitle')}</div>
+      <div class="footer-contacts-list">
+        <a class="contact-link" href="tel:+998937200605"><span class="contact-ico phone-ico">📞</span><span>+998 93 720 06 05</span></a>
+        <a class="contact-link" href="tel:+998933305000"><span class="contact-ico phone-ico">📞</span><span>+998 93 330 50 00</span></a>
+        <a class="contact-link tg-link" href="${companyTelegram}" target="_blank" rel="noopener noreferrer">
+          <span class="contact-ico tg-ico"><svg viewBox="0 0 24 24"><path d="m20.66 3.99-17.7 6.83c-1.21.49-1.2 1.16-.22 1.46l4.54 1.42 10.53-6.64c.5-.3.95-.14.58.19L9.86 15.02h-.01l-.31 4.67c.46 0 .66-.21.92-.46l2.2-2.14 4.58 3.38c.84.47 1.45.23 1.66-.78l3-14.15c.31-1.23-.47-1.78-1.24-1.55z"/></svg></span>
+          <span>Telegram · @NPOELXOLDING ↗</span>
+        </a>
+        <a class="contact-link insta-link" href="${companyInstagram}" target="_blank" rel="noopener noreferrer">
+          <span class="contact-ico insta-ico"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></span>
+          <span>Instagram · @elxolding ↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col footer-address-col">
+      <div class="footer-title">${t('addressTitle')}</div>
+      <div class="address-row">
+        <span class="contact-ico address-ico">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </span>
+        <span class="address-text">${esc(t('address'))}</span>
+      </div>
+      <a class="footer-map-link" href="${companyLocation}" target="_blank" rel="noopener noreferrer">
+        <span class="map-link-ico"><svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></span>
+        <span>${state.lang==='uz'?'Google xaritada ko‘rish ↗':'Посмотреть на карте Google ↗'}</span>
+      </a>
+      <button class="primary send-manager-btn" data-go="cart">${t('sendManager')}</button>
+    </div>
+  `;
+}
 const renderBeforeContacts=render;
 render=function(){renderBeforeContacts();renderContacts()};
 const renderCartBeforeContacts=renderCart;
