@@ -1293,7 +1293,6 @@ html.a11y-no-images #hero-slider {
   position: relative;
   width: 100%;
   aspect-ratio: 3.8 / 1;
-  min-height: 180px;
   background: #092237;
   overflow: hidden;
   border-radius: 20px;
@@ -1326,7 +1325,7 @@ html.a11y-no-images #hero-slider {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: high-quality;
@@ -1398,10 +1397,36 @@ html.a11y-no-images #hero-slider {
 }
 @media(max-width:800px){
   .hero-slider {
-    aspect-ratio: 2.6 / 1;
-    min-height: 160px;
+    aspect-ratio: 3.8 / 1 !important;
+    min-height: auto !important;
+    border-radius: 14px !important;
+    margin-bottom: 16px !important;
   }
-  .slider-arrow { width: 34px; height: 34px; font-size: 18px; }
+  .slider-arrow {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 16px !important;
+  }
+  .slider-prev { left: 8px !important; }
+  .slider-next { right: 8px !important; }
+  .slider-dots {
+    bottom: 8px !important;
+    padding: 3px 8px !important;
+    gap: 5px !important;
+  }
+  .slider-dot {
+    width: 6px !important;
+    height: 6px !important;
+  }
+  .slider-dot.active {
+    width: 16px !important;
+  }
+}
+@media(max-width:480px){
+  .hero-slider {
+    aspect-ratio: 3.8 / 1 !important;
+    border-radius: 12px !important;
+  }
 }
 
 
