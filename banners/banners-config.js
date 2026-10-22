@@ -3,52 +3,52 @@
 // и прописывайте пути к ним ниже:
 window.BANNERS_CONFIG = [
   {
-    image: 'C:/Users/Zender.uz/.gemini/antigravity/brain/c3ff4698-57cf-4c98-ba3c-82483c331154/.user_uploaded/media_1792672808909_f32df4a3.png',
+    image: 'banners/1-turnkey.png',
     direction: '',
     alt: 'Комплектация под ключ — Полное оснащение учебных заведений'
   },
   {
-    image: 'C:/Users/Zender.uz/.gemini/antigravity/brain/c3ff4698-57cf-4c98-ba3c-82483c331154/.user_uploaded/media_1792672554312_5e2ca940.png',
+    image: 'banners/2-physics.png',
     direction: 'Физика',
     alt: 'Кабинеты физики — Наглядные эксперименты, глубокие знания'
   },
   {
-    image: 'C:/Users/Zender.uz/.gemini/antigravity/brain/c3ff4698-57cf-4c98-ba3c-82483c331154/.user_uploaded/media_1792672728641_1b9fdad0.png',
+    image: 'banners/3-chemistry.png',
     direction: 'Химия',
     alt: 'Кабинеты химии — Всё для безопасных и увлекательных экспериментов'
   },
   {
-    image: 'C:/Users/Zender.uz/.gemini/antigravity/brain/c3ff4698-57cf-4c98-ba3c-82483c331154/.user_uploaded/media_1792672809010_f0e16128.png',
+    image: 'banners/4-biology.png',
     direction: 'Биология',
     alt: 'Кабинеты биологии — Изучаем жизнь, сегодня формируем будущее'
   },
   {
-    image: 'C:/Users/Zender.uz/.gemini/antigravity/brain/c3ff4698-57cf-4c98-ba3c-82483c331154/.user_uploaded/media_1792672808938_a52a82bb.png',
+    image: 'banners/5-lab.png',
     direction: 'Оборудование общего пользования',
     alt: 'Лабораторное оборудование — Современные решения для качественного образования'
   },
   {
-    image: 'C:/Users/Zender.uz/.gemini/antigravity/brain/c3ff4698-57cf-4c98-ba3c-82483c331154/.user_uploaded/media_1792672808975_dbcd5316.png',
+    image: 'banners/6-primary.png',
     direction: 'Начальные классы',
     alt: 'Начальные классы — Современная учебная среда для первых шагов в знаниях'
   },
   {
-    image: 'C:/Users/Zender.uz/.gemini/antigravity/brain/c3ff4698-57cf-4c98-ba3c-82483c331154/.user_uploaded/media_1792672728656_c79dd0bd.png',
+    image: 'banners/7-preschool.png',
     direction: 'Дошкольное образование',
     alt: 'Дошкольное образование — Современное оборудование для развития детей'
   },
   {
-    image: 'C:/Users/Zender.uz/.gemini/antigravity/brain/c3ff4698-57cf-4c98-ba3c-82483c331154/.user_uploaded/media_1792672728698_3bd147a3.png',
+    image: 'banners/8-ndp.png',
     direction: 'НДП',
     alt: 'Начальная допризывная подготовка (НДП)'
   },
   {
-    image: 'C:/Users/Zender.uz/.gemini/antigravity/brain/c3ff4698-57cf-4c98-ba3c-82483c331154/.user_uploaded/media_1792672728701_5e36790c.png',
+    image: 'banners/9-digital.png',
     direction: 'Оборудование общего пользования',
     alt: 'Цифровое образование — Современные решения для образования будущего'
   },
   {
-    image: 'C:/Users/Zender.uz/.gemini/antigravity/brain/c3ff4698-57cf-4c98-ba3c-82483c331154/.user_uploaded/media_1792672728716_5674f32f.png',
+    image: 'banners/10-furniture.png',
     direction: '',
     alt: 'Мебель для учебных заведений — Современные и функциональные решения'
   }

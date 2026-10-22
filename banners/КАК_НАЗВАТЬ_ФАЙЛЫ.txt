@@ -1,0 +1,16 @@
+# ИМЕНА ФАЙЛОВ ДЛЯ GITHUB
+
+Чтобы баннеры работали на GitHub Pages (eldosh-motors.github.io), сохраните ваши картинки прямо в папку `banners/` под следующими именами:
+
+1. `banners/1-turnkey.png` — Комплектация под ключ
+2. `banners/2-physics.png` — Кабинеты физики
+3. `banners/3-chemistry.png` — Кабинеты химии
+4. `banners/4-biology.png` — Кабинеты биологии
+5. `banners/5-lab.png` — Лабораторное оборудование
+6. `banners/6-primary.png` — Начальные классы
+7. `banners/7-preschool.png` — Дошкольное образование
+8. `banners/8-ndp.png` — НДП
+9. `banners/9-digital.png` — Цифровое образование
+10. `banners/10-furniture.png` — Мебель
+
+После загрузки этих 10 файлов в репозиторий GitHub в папку `banners/`, сайт сразу начнет показывать их в слайдере!

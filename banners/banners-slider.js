@@ -26,7 +26,7 @@
       <div class="hero-slider-track">
         ${banners.map((b, idx) => `
           <div class="hero-slide ${idx === currentBannerIdx ? 'active' : ''}" data-idx="${idx}" data-direction="${esc(b.direction || '')}">
-            <img src="${esc(b.image)}" alt="${esc(b.alt || 'ELXOLDING Banner')}" class="hero-banner-img" onerror="this.parentElement.classList.add('banner-fallback')">
+            <img src="${esc(b.image)}" alt="${esc(b.alt || 'ELXOLDING Banner')}" class="hero-banner-img" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/eldosh-motors/elxolding-catalog/main/'+'${esc(b.image)}'">
           </div>
         `).join('')}
       </div>
