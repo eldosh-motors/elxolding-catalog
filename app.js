@@ -424,7 +424,7 @@ function renderAbout(){
       <div class="certs-grid">
         <div class="cert-card">
           <div class="cert-img-wrap" style="cursor:zoom-in;">
-            <img src="assets/certificates/cert-iso-ru.png" alt="Сертификат соответствия ISO 9001:2015 TIC" loading="lazy" onerror="this.src='assets/certificates/certificates-all.png'">
+            <img src="assets/certificates/2TVGG02023100Zert_ru_1.png" alt="Сертификат соответствия ISO 9001:2015 TIC" loading="lazy" onerror="this.src='assets/certificates/cert-iso-ru.png'">
           </div>
           <div class="cert-meta">
             <strong>${uz?'ISO 9001:2015 TIC (RU)':'Сертификат ISO 9001:2015 TIC'}</strong>
@@ -434,21 +434,11 @@ function renderAbout(){
 
         <div class="cert-card">
           <div class="cert-img-wrap" style="cursor:zoom-in;">
-            <img src="assets/certificates/cert-conformity-uz.png" alt="Sertifikat Muvofiqlik Milliy Tizimi" loading="lazy" onerror="this.src='assets/certificates/certificates-all.png'">
+            <img src="assets/certificates/photo_2026-10-23_17-25-06.jpg" alt="Сертификат соответствия ELXOLDING" loading="lazy" onerror="this.src='assets/certificates/cert-conformity-uz.png'">
           </div>
           <div class="cert-meta">
-            <strong>${uz?'Muvofiqlik sertifikati (UZ)':'Сертификат соответствия UZ'}</strong>
-            <span>${uz?'O‘zbekiston Respublikasi Milliy sertifikatlashtirish tizimi (O‘zDSt ISO 9001:2015)':'Национальная система сертификации РУз (O‘z DSt ISO 9001:2015)'}</span>
-          </div>
-        </div>
-
-        <div class="cert-card">
-          <div class="cert-img-wrap" style="cursor:zoom-in;">
-            <img src="assets/certificates/cert-iso-en.png" alt="Certificate ISO 9001:2015 TIC English" loading="lazy" onerror="this.src='assets/certificates/certificates-all.png'">
-          </div>
-          <div class="cert-meta">
-            <strong>${uz?'Certificate ISO 9001:2015 (EN)':'Certificate ISO 9001:2015'}</strong>
-            <span>${uz?'International Management System Certificate TIC':'International Management System Certificate TIC'}</span>
+            <strong>${uz?'Muvofiqlik sertifikati':'Сертификат соответствия'}</strong>
+            <span>${uz?'O‘zbekiston Respublikasi Milliy sertifikatlashtirish tizimi':'Национальная система сертификации продукции'}</span>
           </div>
         </div>
       </div>
