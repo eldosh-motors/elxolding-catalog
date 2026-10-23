@@ -36,8 +36,14 @@ function renderContacts(){
     <div class="footer-col footer-contacts-col">
       <div class="footer-title">${t('contactTitle')}</div>
       <div class="footer-contacts-list">
-        <a class="contact-link" href="tel:+998937200605"><span class="contact-ico phone-ico">📞</span><span>+998 93 720 06 05</span></a>
-        <a class="contact-link" href="tel:+998933305000"><span class="contact-ico phone-ico">📞</span><span>+998 93 330 50 00</span></a>
+        <a class="contact-link" href="tel:+998662340151"><span class="contact-ico phone-ico">📞</span><span>+998 (66) 234-01-51</span></a>
+        <a class="contact-link" href="tel:+998662340121"><span class="contact-ico phone-ico">📞</span><span>+998 (66) 234-01-21</span></a>
+        <a class="contact-link" href="tel:+998933305000"><span class="contact-ico phone-ico">📞</span><span>+998 (93) 330-50-00</span></a>
+        <a class="contact-link" href="tel:+998937200605"><span class="contact-ico phone-ico">📞</span><span>+998 (93) 720-06-05</span></a>
+        <a class="contact-link mail-link" href="mailto:elxolding@bk.ru">
+          <span class="contact-ico mail-ico">✉️</span>
+          <span>elxolding@bk.ru</span>
+        </a>
         <a class="contact-link tg-link" href="${companyTelegram}" target="_blank" rel="noopener noreferrer">
           <span class="contact-ico tg-ico"><svg viewBox="0 0 24 24"><path d="m20.66 3.99-17.7 6.83c-1.21.49-1.2 1.16-.22 1.46l4.54 1.42 10.53-6.64c.5-.3.95-.14.58.19L9.86 15.02h-.01l-.31 4.67c.46 0 .66-.21.92-.46l2.2-2.14 4.58 3.38c.84.47 1.45.23 1.66-.78l3-14.15c.31-1.23-.47-1.78-1.24-1.55z"/></svg></span>
           <span>Telegram · @NPOELXOLDING ↗</span>

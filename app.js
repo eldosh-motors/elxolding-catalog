@@ -254,7 +254,8 @@ function renderAbout(){
     <section class="about-hero hero">
       <div class="eyebrow">ELXOLDING / ${uz?'KOMPANIYA HAQIDA':'О КОМПАНИИ'}</div>
       <h1>${uz?'Ilmiy-ishlab chiqarish birlashmasi ELXOLDING':'Научно-производственное объединение ELXOLDING'}</h1>
-      <p>${uz?'1988-yildan buyon ta’lim, fan va sanoat uchun zamonaviy laboratoriya uskunalari, maxsus mebellar va ko‘rgazmali qo‘llanmalar ishlab chiqaruvchi O‘zbekistondagi yetakchi korxona.':'С 1988 года — ведущий производитель учебно-лабораторного оборудования, специализированной мебели и наглядных пособий для образования, науки и промышленности Узбекистана.'}</p>
+      <p class="about-motto">«${uz?'Ta’lim sohasini rivojlantirish — g‘oyadan to o‘quv jarayonini ta’minlashgacha':'Развитие образовательного сектора — от идеи до обеспечения учебного процесса'}»</p>
+      <p>${uz?'1988-yildan buyon ta’lim, fan va sanoat uchun zamonaviy laboratoriya uskunalari, maxsus mebellar va ko‘rgazmali qo‘llanmalar ishlab chiqaruvchi O‘zbekiston va Markaziy Osiyodagi yetakchi korxona.':'С 1988 года — ведущий производитель учебно-лабораторного оборудования, специализированной мебели и наглядных пособий для образования, науки и промышленности Узбекистана и Центральной Азии.'}</p>
     </section>
 
     <div class="about-stats-grid">
@@ -268,50 +269,109 @@ function renderAbout(){
       </div>
       <div class="stat-card">
         <div class="stat-num">250+</div>
-        <div class="stat-label">${uz?'Zamonaviy uskunalar va CNC stanoklari':'Единиц оборудования и станков с ЧПУ'}</div>
+        <div class="stat-label">${uz?'Uskunalar (jumladan 29 ta CNC stanogi)':'Единиц оборудования (в т.ч. 29 ЧПУ)'}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">83</div>
+        <div class="stat-label">${uz?'O‘zbekiston Respublikasi patentlari':'Патентов Республики Узбекистан'}</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">300+</div>
-        <div class="stat-label">${uz?'Yuqori malakali muhandis va mutaxassislar':'Квалифицированных специалистов в штате'}</div>
+        <div class="stat-label">${uz?'Xodimlar (100+ oliy ma’lumotli mutaxassis)':'Сотрудников (100+ с высшим образ.)'}</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">ISO 9001</div>
+        <div class="stat-label">${uz?'2004-yildan buyon xalqaro sifat sertifikati':'Международный стандарт качества с 2004 г.'}</div>
       </div>
     </div>
 
     <div class="about-content-layout">
       <article class="about-card main-card">
         <h2>${uz?'Faoliyat va ishlab chiqarish imkoniyatlari':'Деятельность и производственные мощности'}</h2>
-        <p>${uz?'ООО НПО «ELXOLDING» Samarqand shahrida joylashgan yirik ko‘p tarmoqli ishlab chiqarish majmuasiga ega. Korxona «g‘oyadan to o‘quv jarayonini to‘liq ta’minlashgacha» tamoyili asosida faoliyat yuritadi.':'ООО НПО «ELXOLDING» располагает масштабным производственным комплексом в г. Самарканде на территории 2,24 гектара с производственными площадями свыше 24 000 кв. м. Предприятие реализует полный цикл «от идеи до комплексного обеспечения учебного процесса».'}</p>
-        <p>${uz?'1997-yildan boshlab asosiy e’tibor ta’lim muassasalarini (maktablar, kasb-hunar kollejlari, akademik litseylar va universitetlar) zamonaviy fan kabinetlari va laboratoriyalar bilan to‘liq jihozlashga qaratilgan.':'С 1997 года ключевым направлением стала разработка и выпуск современного оборудования и учебных кабинетов для школ, колледжей, лицеев и вузов страны.'}</p>
+        <p>${uz?'ООО НПО «ELXOLDING» Samarqand shahrida joylashgan yirik ko‘p tarmoqli ishlab chiqarish majmuasiga ega (2,24 gektar hududda 24 000 kv. m dan ortiq ishlab chiqarish maydonlari). Korxona «g‘oyadan to o‘quv jarayonini to‘liq ta’minlashgacha» tamoyili asosida to‘liq tsiklda faoliyat yuritadi.':'ООО НПО «ELXOLDING» располагает масштабным производственным комплексом в г. Самарканде на территории 2,24 гектара с производственными площадями свыше 24 000 кв. м. Предприятие реализует полный замкнутый цикл «от зарождения идеи до серийного производства и сервисного обслуживания».'}</p>
+        <p>${uz?'1997-yildan boshlab asosiy e’tibor ta’lim muassasalarini (maktablar, kasb-hunar kollejlari, akademik litseylar va oliy o‘quv yurtlari) zamonaviy fan kabinetlari va laboratoriyalar bilan to‘liq jihozlashga qaratilgan. Kompaniya 2000-yildan buyon Ta’lim materiallari ishlab chiqaruvchilar xalqaro assotsiatsiyasi — «WORLDDIDAC» (Bern, Shveysariya) a’zosi hisoblanadi.':'С 1997 года ключевым направлением стала разработка и выпуск современного оборудования и учебных кабинетов для школ, колледжей, лицеев и вузов страны. С 2000 года «ELXOLDING» входит во Всемирную Ассоциацию производителей образовательных материалов «WORLDDIDAC» (Берн, Швейцария).'}</p>
         
         <h3>${uz?'Asosiy yo‘nalishlar:':'Ключевые направления продукции:'}</h3>
         <ul class="about-list">
           <li><strong>${uz?'Kimyo, Fizika va Biologiya:':'Химия, Физика и Биология:'}</strong> ${uz?'laboratoriya asboblari, reaktivlar, kimyoviy idishlar, mikroskoplar, gerbariylar, tabiiy preparatlar va modellar.':'лабораторные приборы, реактивы, лабораторная посуда, микроскопы, гербарии, влажные и пластиковые препараты, анатомические модели.'}</li>
           <li><strong>${uz?'Tabiiy fanlar va Boshlang‘ich ta’lim:':'Естествознание и Начальные классы:'}</strong> ${uz?'atrof-olamni o‘rganish to‘plamlari, ko‘rgazmali bloklar va amaliy qo‘llanmalar.':'наборы для изучения окружающего мира, демонстрационные блоки, раздаточные материалы.'}</li>
           <li><strong>${uz?'Ixtisoslashtirilgan laboratoriya mebellari:':'Специализированная мебель:'}</strong> ${uz?'tortuvchi shkaflar, laboratoriya stollari, kislotaga chidamli yuzalar va jihozlar.':'вытяжные шкафы, островные и пристенные лабораторные столы, стулья, мойки, устойчивые к химическим воздействиям.'}</li>
+          <li><strong>${uz?'Raqamli ta’lim va IT:':'Цифровое образование:'}</strong> ${uz?'interaktiv panellar, kompyuter sinflari, raqamli laboratoriyalar va datchiklar.':'интерактивные панели, компьютерные классы, цифровые лаборатории и датчики.'}</li>
           <li><strong>${uz?'Tibbiy va gigiyenik uskunalar:':'Медицинское оборудование:'}</strong> ${uz?'bakteritsid retsirkulyator-havo tozalagichlar (UVEL seriyasi).':'бактерицидные облучатели-рециркуляторы воздуха (серия UVEL).'}</li>
         </ul>
+
+        <h3>${uz?'Innovatsiyalar va ilmiy yondashuv:':'Инновации и научный потенциал:'}</h3>
+        <p>${uz?'Korxonaning ilmiy-uslubiy bo‘limida olimlar, muhandislar va tajribali pedagoglar faoliyat yuritadi. 83 ta patent olingan, 40 dan ortiq ilmiy-uslubiy ishlar chop etilgan. Mahsulotlarimiz «O‘zstandart» agentligi sertifikatlariga ega hamda «O‘zbekistonning eng yaxshi mahsuloti» diplomi bilan taqdirlangan.':'В научно-методическом блоке предприятия работают ученые, инженеры и опытные педагоги. Разработки защищены 83 патентами Республики Узбекистан, опубликовано свыше 40 научных трудов. Оборудование сертифицировано Агентством «Узстандарт» и удостоено диплома «Лучшая продукция Узбекистана».'}</p>
       </article>
 
       <article class="about-card side-card">
-        <h2>${uz?'Yutuqlar va xalqaro tan olinish':'Достижения и масштабные проекты'}</h2>
+        <h2>${uz?'Yirik loyihalar va xalqaro yutuqlar':'Крупные проекты и достижения'}</h2>
+        
         <div class="achievement-item">
-          <strong>ISO 9001</strong>
-          <p>${uz?'Korxonada xalqaro sifat menejmenti tizimi (ISO 9001) 2004-yildan buyon muvaffaqiyatli amal qilmoqda.':'Международная система менеджмента качества действует на предприятии с 2004 года.'}</p>
+          <strong>${uz?'Islom taraqqiyot banki (2022)':'Исламский банк развития (2022)'}</strong>
+          <p>${uz?'«Oliy ta’lim muassasalarining moddiy-texnik bazasini mustahkamlash» loyihasi doirasida O‘zbekistonning 58 ta OTMlarida 13 ta yo‘nalish bo‘yicha zamonaviy laboratoriyalar to‘liq jihozlandi.':'В рамках проекта «Укрепление материально-технической базы высших учебных заведений» оснащены лаборатории по 13 направлениям в 58 вузах Узбекистана.'}</p>
         </div>
+
         <div class="achievement-item">
-          <strong>${uz?'Xalqaro Mendeleyev olimpiadasi':'Международная Менделеевская олимпиада'}</strong>
-          <p>${uz?'Toshkent, Ashxobod, Boku va Ostonada o‘tkazilgan nufuzli Xalqaro Mendeleyev kimyo olimpiadasi amaliy turlarining eksklyuziv jihozlash hamkori.':'Эксклюзивный поставщик оборудования и реактивов для экспериментальных туров престижной Международной Менделеевской олимпиады по химии (Ташкент, Ашхабад, Баку, Астана).'}</p>
+          <strong>${uz?'Jahon banki loyihalari':'Проекты Всемирного банка'}</strong>
+          <p>${uz?'«Oliy ta’lim tizimini modernizatsiya qilish» doirasida 37 ta OTMda 35 ta yo‘nalish bo‘yicha laboratoriyalar, shuningdek ToshDTU laboratoriyalari va Sabzavot-poliz ekinlari ITI uchun 10 ta laboratoriya jihozlandi.':'В рамках «Модернизации высшего образования» оснащены лаборатории по 35 направлениям в 37 вузах, научная лаборатория ТашГТУ и 10 лабораторий НИИ овощебахчевых культур.'}</p>
         </div>
+
         <div class="achievement-item">
-          <strong>${uz?'58 ta oliy ta’lim muassasasi':'Оснащение 58 вузов'}</strong>
-          <p>${uz?'Islom taraqqiyot banki loyihasi doirasida O‘zbekistondagi 58 ta oliy ta’lim muassasasi laboratoriyalari 13 ta yo‘nalish bo‘yicha to‘liq jihozlandi.':'В рамках проекта Исламского банка развития оснащены современные лаборатории по 13 направлениям в 58 вузах Республики Узбекистан.'}</p>
+          <strong>${uz?'Xalqaro Mendeleyev kimyo olimpiadasi':'Международная Менделеевская олимпиада'}</strong>
+          <p>${uz?'2008–2015-yillarda Toshkent, Ashxobod, Boku va Ostonada o‘tkazilgan Xalqaro Mendeleyev kimyo olimpiadasi amaliy turlarining eksklyuziv jihozlash hamkori.':'С 2008 по 2015 годы — эксклюзивный поставщик оборудования для экспериментальных туров Менделеевской олимпиады по химии (Ташкент, Ашхабад, Баку, Астана).'}</p>
+        </div>
+
+        <div class="achievement-item">
+          <strong>${uz?'Xalqaro eksport va tenderlar':'Международный экспорт и школы'}</strong>
+          <p>${uz?'2021–2023 yillarda xalqaro tenderlar bo‘yicha Belarusdagi 50 ta va Rossiyadagi 68 ta maktab to‘liq jihozlandi. Eksport geografiyasi: Qozog‘iston, Turkmaniston, Tojikiston, Ozarbayjon, Armaniston, Latviya.':'В 2021–2023 гг. по международным тендерам оснащены 50 школ в Беларуси и 68 школ в РФ. Продукция экспортируется в Казахстан, Туркменистан, Таджикистан, Азербайджан, Армению, Латвию.'}</p>
+        </div>
+
+        <div class="achievement-item">
+          <strong>${uz?'Xalqaro sifat standarti ISO 9001':'Международный стандарт ISO 9001'}</strong>
+          <p>${uz?'Xalqaro sifat menejmenti tizimi (ISO 9001) korxonada 2004-yildan buyon muvaffaqiyatli amal qilmoqda.':'Международная система менеджмента качества ISO 9001 непрерывно поддерживается с 2004 года.'}</p>
         </div>
       </article>
+    </div>
+
+    <div class="about-contacts-block">
+      <h2>${uz?'Bosh ofis va aloqa ma’lumotlari':'Контакты головного офиса и завода'}</h2>
+      <div class="about-contacts-grid">
+        <div class="about-contact-card">
+          <span class="about-contact-icon">📍</span>
+          <div>
+            <strong>${uz?'Manzilimiz':'Адрес производства'}</strong>
+            <p>140134, ${uz?'Samarqand sh., Gagarin ko‘chasi, 36 (sobiq «KINAP» zavodi hududi)':'г. Самарканд, ул. Гагарина, 36 (территория з-да «КИНАП»)'}</p>
+          </div>
+        </div>
+        <div class="about-contact-card">
+          <span class="about-contact-icon">📞</span>
+          <div>
+            <strong>${uz?'Telefonlar':'Телефоны'}</strong>
+            <p>+998 (66) 234-01-51 · +998 (66) 234-01-21<br>+998 (93) 330-50-00 · +998 (93) 720-06-05</p>
+          </div>
+        </div>
+        <div class="about-contact-card">
+          <span class="about-contact-icon">✉️</span>
+          <div>
+            <strong>${uz?'Elektron pochta':'Электронная почта'}</strong>
+            <p><a href="mailto:elxolding@bk.ru">elxolding@bk.ru</a></p>
+          </div>
+        </div>
+        <div class="about-contact-card">
+          <span class="about-contact-icon">🌐</span>
+          <div>
+            <strong>${uz?'Rasmiy veb-sayt':'Официальный сайт'}</strong>
+            <p><a href="https://elxolding.uz" target="_blank" rel="noopener noreferrer">www.elxolding.uz ↗</a></p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="about-footer-cta">
       <div>
         <h3>${uz?'ELXOLDING mahsulotlari bilan tanishing':'Ознакомьтесь с нашей продукцией'}</h3>
-        <p>${uz?'Katalogimizda ta’lim uchun 1400 dan ortiq tayyor laboratoriya jihozlari va buyumlari mavjud.':'В нашем каталоге доступно более 1400 наименований готового учебно-лабораторного оборудования.'}</p>
+        <p>${uz?'Katalogimizda ta’lim uchun 1400 dan ortiq tayyor laboratoriya jihozlari va buyumlari mavjud.':'В нашем каталоге доступно более 1400 наименований сертифицированного учебно-лабораторного оборудования.'}</p>
       </div>
       <div class="about-cta-btns">
         <button class="primary" data-go="catalog">${t('catalog')}</button>

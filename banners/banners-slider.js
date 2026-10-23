@@ -26,7 +26,7 @@
       <div class="hero-slider-track">
         ${banners.map((b, idx) => `
           <div class="hero-slide ${idx === currentBannerIdx ? 'active' : ''}" data-idx="${idx}" data-direction="${esc(b.direction || '')}">
-            <img src="${esc(b.image)}" alt="${esc(b.alt || 'ELXOLDING Banner')}" class="hero-banner-img">
+            <img src="${esc(b.image)}" alt="${esc(b.alt || 'ELXOLDING Banner')}" class="hero-banner-img" onerror="if(!this.dataset.triedExt){this.dataset.triedExt='1';if(this.src.endsWith('.png')){this.src=this.src.replace(/\\.png$/,'.jpg');}else if(this.src.endsWith('.jpg')){this.src=this.src.replace(/\\.jpg$/,'.jpeg');}}">
           </div>
         `).join('')}
       </div>
