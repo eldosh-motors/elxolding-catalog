@@ -1,0 +1,6 @@
+@echo off
+chcp 65001 >nul
+echo Скачивание фотографий завода и производства с elxolding.uz...
+python "%~dp0fetch_factory.py"
+echo Готово! Нажмите любую клавишу...
+pause >nul

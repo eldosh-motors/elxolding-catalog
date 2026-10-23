@@ -41,7 +41,7 @@ function renderGuide(){const uz=state.lang==='uz';const steps=uz?[
  ['Оформите заявку','Укажите контактные данные и дополнительную информацию. Сохраните готовую заявку в удобном формате: PDF, Excel CSV или TXT.'],
  ['Получите коммерческое предложение','Передайте заявку менеджеру ELXOLDING для уточнения наличия, стоимости, условий оплаты и доставки.']
  ];$('#app').innerHTML=`<section class="hero"><div class="eyebrow">ELXOLDING / SMART CATALOG</div><h1>${uz?'Qanday buyurtma beriladi':'Как оформить заявку'}</h1><p>${uz?'Tanlashdan tasdiqlashgacha — to‘rt oddiy qadam.':'От выбора оборудования до подтверждения — четыре простых шага.'}</p></section><div class="guide-grid">${steps.map((s,n)=>`<article class="guide-step"><span>${n+1}</span><h2>${s[0]}</h2><p>${s[1]}</p></article>`).join('')}</div><div class="guide-actions"><button class="primary" data-go="catalog">${t('back')}</button><button data-go="cart">${t('cart')}</button></div>`}
-function renderCatalog(){const dirs=[...new Set(products.map(p=>p.direction).filter(Boolean))];$('#app').innerHTML=`<section class="hero"><div class="eyebrow">ELXOLDING / SMART CATALOG</div><h1>${t('hero')}</h1><p>${t('intro')}</p></section><div class="tools"><input id="search" type="search" value="${esc(state.query)}" placeholder="${t('search')}" aria-label="${t('search')}"><select id="direction" aria-label="${t('all')}"><option value="">${t('all')}</option>${dirs.map(d=>`<option value="${esc(d)}" ${d===state.direction?'selected':''}>${esc(field(products.find(p=>p.direction===d),'direction'))}</option>`).join('')}</select><select id="sort" aria-label="${t('name')}">${['name','cheap','expensive'].map(k=>`<option value="${k}" ${state.sort===k?'selected':''}>${t(k)}</option>`).join('')}</select></div><div id="display-options"></div><div id="results"></div>`;installDisplayControls();renderResults();let timer;$('#search').oninput=e=>{state.query=e.target.value;state.pageNo=1;clearTimeout(timer);timer=setTimeout(renderResults,130)};$('#direction').onchange=e=>{state.direction=e.target.value;state.pageNo=1;renderResults()};$('#sort').onchange=e=>{state.sort=e.target.value;state.pageNo=1;renderResults()}}
+function renderCatalog(){const dirs=[...new Set(products.map(p=>p.direction).filter(Boolean))];$('#app').innerHTML=`<section class="hero"><div class="eyebrow">ELXOLDING / SMART CATALOG</div><h1>${t('hero')}</h1><p>${t('intro')}</p></section><div class="tools"><input id="search" type="search" value="${esc(state.query)}" placeholder="${t('search')}" aria-label="${t('search')}"><select id="direction" aria-label="${t('all')}"><option value="">${t('all')}</option>${dirs.map(d=>`<option value="${esc(d)}" ${d===state.direction?'selected':''}>${esc(field(products.find(p=>p.direction===d),'direction'))}</option>`).join('')}</select><select id="sort" aria-label="${t('name')}">${['name'].map(k=>`<option value="${k}" ${state.sort===k?'selected':''}>${t(k)}</option>`).join('')}</select></div><div id="display-options"></div><div id="results"></div>`;installDisplayControls();renderResults();let timer;$('#search').oninput=e=>{state.query=e.target.value;state.pageNo=1;clearTimeout(timer);timer=setTimeout(renderResults,130)};$('#direction').onchange=e=>{state.direction=e.target.value;state.pageNo=1;renderResults()};$('#sort').onchange=e=>{state.sort=e.target.value;state.pageNo=1;renderResults()}}
 function renderResults(){const query=state.query.trim().toLocaleLowerCase();const rows=products.filter(p=>(!state.direction||p.direction===state.direction)&&(!query||[p.id,p.name,p.description,p.uz?.name,p.uz?.description].join(' ').toLocaleLowerCase().includes(query))).sort((a,b)=>{if(state.sort==='name')return field(a,'name').localeCompare(field(b,'name'),state.lang);const ap=Number(a.price)||Infinity,bp=Number(b.price)||Infinity;if(ap===Infinity||bp===Infinity)return ap===bp?0:ap===Infinity?1:-1;return state.sort==='cheap'?ap-bp:bp-ap});const pages=Math.max(1,Math.ceil(rows.length/state.pageSize));state.pageNo=Math.min(state.pageNo,pages);$('#results').innerHTML=`<div class="count">${t('found')}: ${rows.length}</div>`+(rows.length?`<div class="grid cols-${state.cols||4} ${state.view==='list'?'list':''}">${rows.slice((state.pageNo-1)*state.pageSize,state.pageNo*state.pageSize).map(p=>`<article class="card"><button class="photo" data-detail="${esc(p.id)}" aria-label="${t('details')}: ${esc(field(p,'name'))}">${image(p)}</button><div class="card-body"><span class="category">${esc(field(p,'direction'))}</span><h3>${esc(field(p,'name'))}</h3><span class="muted">${t('article')}: ${esc(p.id)} · ${esc(field(p,'unit'))}</span><div class="bottom"><span class="price">${price(p)}</span><button class="primary" data-add="${esc(p.id)}" title="${t('add')}" aria-label="${t('add')}: ${esc(field(p,'name'))}">${cartSVG}</button></div></div></article>`).join('')}</div><div class="pager"><button data-page="-1" ${state.pageNo===1?'disabled':''}>←</button><span>${t('page')} ${state.pageNo} / ${pages}</span><button data-page="1" ${state.pageNo===pages?'disabled':''}>→</button></div>`:`<div class="empty">${t('noResults')}</div>`)}
 function add(id){const item=state.cart.find(i=>i.id===id);if(item)item.quantity=Math.min(999999,round(item.quantity+1));else state.cart.push({id,quantity:1});save();toast(t('added'))}
 function detail(id){const p=byId.get(id);if(!p)return;$('#product-detail').dataset.id=id;$('#product-detail').innerHTML=`<div class="detail"><div>${image(p,false)}</div><div><span class="category">${esc(field(p,'direction'))}</span><h2>${esc(field(p,'name'))}</h2><div class="muted">${t('article')}: ${esc(p.id)}</div><div class="price">${price(p)}</div><p>${esc(field(p,'description'))}</p><button class="primary" data-add="${esc(p.id)}">${t('add')}</button></div></div>`;if(!$('#product-dialog').open)$('#product-dialog').showModal()}
@@ -232,7 +232,7 @@ ${rowsXml}   <Row ss:Height="22">
 </Workbook>`;
 }
 
-function renderCart(){if(!state.cart.length){$('#app').innerHTML=`<div class="empty"><h2>${t('empty')}</h2><button class="primary" data-go="catalog">${t('back')}</button></div>`;return}$('#app').innerHTML=`<div class="heading"><div><h1>${t('cart')}</h1><div class="cart-vat-note">${state.lang==='uz'?'Barcha narxlar QQS bilan ko‘rsatilgan':'Все цены указаны с учётом НДС'}</div></div><button data-go="catalog">← ${t('back')}</button></div><div class="cart-layout"><section class="cart-list"><div class="cart-table-head"><span class="col-num">№</span><span class="col-photo">${t('photo')}</span><span class="col-name">${t('product')}</span><span class="col-unit">${t('unit')}</span><span class="col-qty">${state.lang==='uz'?'Miqdor':'К-во'}</span><span class="col-price">${state.lang==='uz'?'QQS bilan narxi':'Цена с НДС'}</span><span class="col-del"></span></div>${state.cart.map((item,idx)=>{const p=byId.get(item.id);return `<div class="cart-row" data-row="${esc(item.id)}"><span class="item-num">${idx+1}</span><button type="button" class="cart-row-thumb" data-detail="${esc(item.id)}" title="${t('details')}">${image(p)}</button><div class="cart-row-info"><strong class="cart-title-btn" data-detail="${esc(item.id)}">${esc(field(p,'name'))}</strong><small class="muted">${t('article')}: ${esc(p.id)}</small></div><div class="cart-row-unit">${esc(field(p,'unit'))||'шт.'}</div><input type="number" data-quantity="${esc(p.id)}" value="${item.quantity}" min="0.001" max="999999" step="any" aria-label="${t('quantity')}: ${esc(field(p,'name'))}"><div class="line-price">${Number(p.price)>0?money(round(p.price*item.quantity)):t('unknown')}</div><button class="remove" data-remove="${esc(p.id)}" title="${t('remove')}" aria-label="${t('remove')}"><svg class="remove-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>`}).join('')}<button class="plain" id="clear">${t('clear')}</button></section><form class="summary" id="order-form"><h2>${t('yourOrder')}</h2>${['name','phone','city'].map(k=>`<label>${t(k==='name'?'customer':k)}${['name','phone'].includes(k)?' *':''}<input name="${k}" type="${k==='phone'?'tel':'text'}" value="${esc(state.customer[k])}" maxlength="${k==='phone'?50:200}" ${['name','phone'].includes(k)?'required':''} autocomplete="${k==='name'?'name':k==='phone'?'tel':'street-address'}"></label>`).join('')}<label>${t('note')}<textarea name="note" maxlength="2000">${esc(state.customer.note)}</textarea></label><div class="muted">${t('total')}</div><div class="total" id="cart-total">${money(amount())} <small>${t('currency')}</small></div><div class="summary-vat-badge">${state.lang==='uz'?'* Narxlar QQS bilan':'* Включая НДС'}</div><p class="notice no-price">${hasUnknown()?t('unknownNote'):''}</p><button class="primary" type="submit">${t('download')}</button><p class="notice">${t('hint')}</p></form></div>`;$('#order-form').oninput=e=>{if(e.target.name in state.customer)state.customer[e.target.name]=e.target.value};$('#order-form').onsubmit=e=>{e.preventDefault();exportOrder('excel')};$('#clear').onclick=()=>{if(confirm(t('clearConfirm'))){state.cart=[];save();renderCart()}}}
+function renderCart(){if(!state.cart.length){$('#app').innerHTML=`<div class="empty"><h2>${t('empty')}</h2><button class="primary" data-go="catalog">${t('back')}</button></div>`;return}$('#app').innerHTML=`<div class="heading"><div><h1>${t('cart')}</h1></div><button data-go="catalog">← ${t('back')}</button></div><div class="cart-layout"><section class="cart-list"><div class="cart-table-head"><span class="col-num">№</span><span class="col-photo">${t('photo')}</span><span class="col-name">${t('product')}</span><span class="col-unit">${t('unit')}</span><span class="col-qty">${state.lang==='uz'?'Miqdor':'К-во'}</span><span class="col-del"></span></div>${state.cart.map((item,idx)=>{const p=byId.get(item.id);return `<div class="cart-row" data-row="${esc(item.id)}"><span class="item-num">${idx+1}</span><button type="button" class="cart-row-thumb" data-detail="${esc(item.id)}" title="${t('details')}">${image(p)}</button><div class="cart-row-info"><strong class="cart-title-btn" data-detail="${esc(item.id)}">${esc(field(p,'name'))}</strong><small class="muted">${t('article')}: ${esc(p.id)}</small></div><div class="cart-row-unit">${esc(field(p,'unit'))||'шт.'}</div><input type="number" data-quantity="${esc(p.id)}" value="${item.quantity}" min="0.001" max="999999" step="any" aria-label="${t('quantity')}: ${esc(field(p,'name'))}"><button class="remove" data-remove="${esc(p.id)}" title="${t('remove')}" aria-label="${t('remove')}"><svg class="remove-ico" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>`}).join('')}<button class="plain" id="clear">${t('clear')}</button></section><form class="summary" id="order-form"><h2>${t('yourOrder')}</h2>${['name','phone','city'].map(k=>`<label>${t(k==='name'?'customer':k)}${['name','phone'].includes(k)?' *':''}<input name="${k}" type="${k==='phone'?'tel':'text'}" value="${esc(state.customer[k])}" maxlength="${k==='phone'?50:200}" ${['name','phone'].includes(k)?'required':''} autocomplete="${k==='name'?'name':k==='phone'?'tel':'street-address'}"></label>`).join('')}<label>${t('note')}<textarea name="note" maxlength="2000">${esc(state.customer.note)}</textarea></label><p class="notice no-price" style="font-size:15px;font-weight:700;color:var(--teal);">${t('unknown')}</p><button class="primary" type="submit">${t('download')}</button><p class="notice">${t('hint')}</p></form></div>`;$('#order-form').oninput=e=>{if(e.target.name in state.customer)state.customer[e.target.name]=e.target.value};$('#order-form').onsubmit=e=>{e.preventDefault();exportOrder('excel')};$('#clear').onclick=()=>{if(confirm(t('clearConfirm'))){state.cart=[];save();renderCart()}}}
 function order(){const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Tashkent',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).formatToParts(new Date());const v=Object.fromEntries(parts.map(p=>[p.type,p.value]));return {stamp:`${v.day}.${v.month}.${v.year}_${v.hour}-${v.minute}-${v.second}`,display:`${v.day}.${v.month}.${v.year} ${v.hour}:${v.minute}:${v.second}`,items:state.cart.map(i=>{const p=byId.get(i.id);return {id:p.id,name:field(p,'name'),unit:field(p,'unit'),quantity:i.quantity,price:Number(p.price)>0?Number(p.price):null,image:photo(p),sum:Number(p.price)>0?round(p.price*i.quantity):null}})}}
 function download(content,type,filename){const url=URL.createObjectURL(new Blob([content],{type})),a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);toast(t('downloaded'))}
 function csvCell(value){let s=String(value??'');if(/^[\s]*[=+@-]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"'}
@@ -246,7 +246,7 @@ async function exportOrder(format){
   download(xmlContent,'application/vnd.ms-excel;charset=utf-8',filename);
 }
 document.addEventListener('click',e=>{const addButton=e.target.closest('[data-add]'),detailButton=e.target.closest('[data-detail]'),remove=e.target.closest('[data-remove]'),page=e.target.closest('[data-page]'),goButton=e.target.closest('[data-go]');if(addButton)add(addButton.dataset.add);else if(detailButton)detail(detailButton.dataset.detail);else if(remove){state.cart=state.cart.filter(i=>i.id!==remove.dataset.remove);save();renderCart()}else if(page){state.pageNo+=Number(page.dataset.page);renderResults();$('#results').scrollIntoView({behavior:'smooth',block:'start'})}else if(goButton)go(goButton.dataset.go)});
-document.addEventListener('input',e=>{const id=e.target.dataset.quantity;if(!id)return;const n=Number(e.target.value);if(!Number.isFinite(n)||n<.001||n>999999)return;const item=state.cart.find(i=>i.id===id);item.quantity=Math.round(n*1000)/1000;save();const p=byId.get(id);e.target.closest('.cart-row').querySelector('.line-price').textContent=Number(p.price)>0?money(round(p.price*item.quantity)):t('unknown');$('#cart-total').textContent=`${money(amount())} ${t('currency')}`});
+document.addEventListener('input',e=>{const id=e.target.dataset.quantity;if(!id)return;const n=Number(e.target.value);if(!Number.isFinite(n)||n<.001||n>999999)return;const item=state.cart.find(i=>i.id===id);item.quantity=Math.round(n*1000)/1000;save()});
 document.addEventListener('change',e=>{if(e.target.dataset.quantity&&!e.target.checkValidity()){const item=state.cart.find(i=>i.id===e.target.dataset.quantity);e.target.value=item.quantity}});
 function renderAbout(){
   const uz=state.lang==='uz';
@@ -334,6 +334,85 @@ function renderAbout(){
       </article>
     </div>
 
+    <section class="about-factory-block">
+      <h2>${uz?'Ishlab chiqarish quvvatlari va zavod galereyasi':'Производственный комплекс и цеха завода'}</h2>
+      <p class="factory-desc">${uz?'24 000 m² ishlab chiqarish maydonlari, zamonaviy CNC uskunalar va yuqori aniqlikdagi laboratoriya texnologiyalari.':'Более 24 000 м² современных цехов, 250+ единиц оборудования, ЧПУ-станки и замкнутый цикл производства.'}</p>
+      <div class="factory-gallery-grid">
+        <div class="factory-photo-card">
+          <div class="factory-img-wrap">
+            <img src="assets/factory/factory_1.jpg" alt="Производство ELXOLDING" loading="lazy" onerror="this.parentElement.parentElement.style.display='none'">
+          </div>
+          <span class="factory-caption">${uz?'CNC va metallga ishlov berish sexi':'Цех металлообработки и ЧПУ'}</span>
+        </div>
+        <div class="factory-photo-card">
+          <div class="factory-img-wrap">
+            <img src="assets/factory/factory_2.jpg" alt="Цех мебели и сборки" loading="lazy" onerror="this.parentElement.parentElement.style.display='none'">
+          </div>
+          <span class="factory-caption">${uz?'Laboratoriya mebellari ishlab chiqarish':'Производство специализированной мебели'}</span>
+        </div>
+        <div class="factory-photo-card">
+          <div class="factory-img-wrap">
+            <img src="assets/factory/factory_3.jpg" alt="Химическая лаборатория" loading="lazy" onerror="this.parentElement.parentElement.style.display='none'">
+          </div>
+          <span class="factory-caption">${uz?'Kimyo va biologiya laboratoriyalari':'Учебно-лабораторные комплексы'}</span>
+        </div>
+        <div class="factory-photo-card">
+          <div class="factory-img-wrap">
+            <img src="assets/factory/factory_4.jpg" alt="Сборочный цех" loading="lazy" onerror="this.parentElement.parentElement.style.display='none'">
+          </div>
+          <span class="factory-caption">${uz?'Yig‘uv va sinov maydoni':'Сборочно-испытательный участок'}</span>
+        </div>
+        <div class="factory-photo-card">
+          <div class="factory-img-wrap">
+            <img src="assets/factory/factory_5.jpg" alt="Контроль качества" loading="lazy" onerror="this.parentElement.parentElement.style.display='none'">
+          </div>
+          <span class="factory-caption">${uz?'Sifat nazorati va qadoqlash':'Контроль качества и комплектация'}</span>
+        </div>
+        <div class="factory-photo-card">
+          <div class="factory-img-wrap">
+            <img src="assets/factory/factory_6.jpg" alt="Склад готовой продукции" loading="lazy" onerror="this.parentElement.parentElement.style.display='none'">
+          </div>
+          <span class="factory-caption">${uz?'Tayyor mahsulotlar ombori':'Логистический комплекс и склад'}</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-certs-block">
+      <h2>${uz?'Sertifikatlar va sifat kafolati':'Сертификаты и гарантия качества'}</h2>
+      <p class="certs-desc">${uz?'Barcha mahsulotlar O‘zbekiston Respublikasi standartlariga va xalqaro ISO 9001 sifat talablariga to‘liq javob beradi.':'Вся производимая продукция сертифицирована в соответствии с национальными и международными стандартами качества ISO 9001:2015.'}</p>
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-img-wrap" style="cursor:zoom-in;">
+            <img src="assets/certificates/cert-iso-ru.png" alt="Сертификат соответствия ISO 9001:2015 TIC" loading="lazy" onerror="this.src='assets/certificates/certificates-all.png'">
+          </div>
+          <div class="cert-meta">
+            <strong>${uz?'ISO 9001:2015 TIC (RU)':'Сертификат ISO 9001:2015 TIC'}</strong>
+            <span>${uz?'Xalqaro sifat menejmenti tizimi sertifikati (TÜV Thüringen)':'Международный сертификат менеджмента качества TÜV Thüringen'}</span>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-img-wrap" style="cursor:zoom-in;">
+            <img src="assets/certificates/cert-conformity-uz.png" alt="Sertifikat Muvofiqlik Milliy Tizimi" loading="lazy" onerror="this.src='assets/certificates/certificates-all.png'">
+          </div>
+          <div class="cert-meta">
+            <strong>${uz?'Muvofiqlik sertifikati (UZ)':'Сертификат соответствия UZ'}</strong>
+            <span>${uz?'O‘zbekiston Respublikasi Milliy sertifikatlashtirish tizimi (O‘zDSt ISO 9001:2015)':'Национальная система сертификации РУз (O‘z DSt ISO 9001:2015)'}</span>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-img-wrap" style="cursor:zoom-in;">
+            <img src="assets/certificates/cert-iso-en.png" alt="Certificate ISO 9001:2015 TIC English" loading="lazy" onerror="this.src='assets/certificates/certificates-all.png'">
+          </div>
+          <div class="cert-meta">
+            <strong>${uz?'Certificate ISO 9001:2015 (EN)':'Certificate ISO 9001:2015'}</strong>
+            <span>${uz?'International Management System Certificate TIC':'International Management System Certificate TIC'}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="about-contacts-block">
       <h2>${uz?'Bosh ofis va aloqa ma’lumotlari':'Контакты головного офиса и завода'}</h2>
       <div class="about-contacts-grid">
@@ -348,7 +427,7 @@ function renderAbout(){
           <span class="about-contact-icon">📞</span>
           <div>
             <strong>${uz?'Telefonlar':'Телефоны'}</strong>
-            <p>+998 (66) 234-01-51 · +998 (66) 234-01-21<br>+998 (93) 330-50-00 · +998 (93) 720-06-05</p>
+            <p>+998 (93) 330-50-00 · +998 (93) 720-06-05</p>
           </div>
         </div>
         <div class="about-contact-card">
