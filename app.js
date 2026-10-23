@@ -15,7 +15,7 @@ const money=n=>formatter[state.lang].format(n),round=n=>Math.round((n+Number.EPS
 const cartSVG='<svg class="cart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>';
 function photo(p,small=true){return p.image?`${p.image}${small?'-thumb':''}.jpg`:''}
 function image(p,small=true){return p.image?`<img src="${esc(photo(p,small))}" alt="${esc(field(p,'name'))}" loading="lazy" decoding="async">`:`<span class="muted">${t('noPhoto')}</span>`}
-function price(p){return Number(p.price)>0?`${money(Number(p.price))} <small>${t('currency')} ${state.lang==='uz'?'(QQS bilan)':'(с НДС)'}</small>`:`<small class="no-price">${t('unknown')}</small>`}
+function price(p){return `<small class="no-price">${t('unknown')}</small>`}
 function save(){try{localStorage.setItem('elx-client-cart',JSON.stringify(state.cart))}catch{}updateNav()}
 function updateNav(){
   $('#catalog-link').textContent=t('catalog');
