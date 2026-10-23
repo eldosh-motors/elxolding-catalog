@@ -260,27 +260,27 @@ function renderAbout(){
 
     <div class="about-stats-grid">
       <div class="stat-card">
-        <div class="stat-num">1988</div>
+        <div class="stat-num" data-target="1988">1988</div>
         <div class="stat-label">${uz?'Tashkil etilgan yili':'Год основания предприятия'}</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">24 000 м²</div>
+        <div class="stat-num" data-target="24000" data-format="spaced" data-suffix=" м²">24 000 м²</div>
         <div class="stat-label">${uz?'Ishlab chiqarish maydoni (2.24 ga hududda)':'Производственные площади (2.24 га)'}</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">250+</div>
+        <div class="stat-num" data-target="250" data-suffix="+">250+</div>
         <div class="stat-label">${uz?'Uskunalar (jumladan 29 ta CNC stanogi)':'Единиц оборудования (в т.ч. 29 ЧПУ)'}</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">83</div>
+        <div class="stat-num" data-target="83">83</div>
         <div class="stat-label">${uz?'O‘zbekiston Respublikasi patentlari':'Патентов Республики Узбекистан'}</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">300+</div>
+        <div class="stat-num" data-target="300" data-suffix="+">300+</div>
         <div class="stat-label">${uz?'Xodimlar (100+ oliy ma’lumotli mutaxassis)':'Сотрудников (100+ с высшим образ.)'}</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">ISO 9001</div>
+        <div class="stat-num stat-iso">ISO 9001</div>
         <div class="stat-label">${uz?'2004-yildan buyon xalqaro sifat sertifikati':'Международный стандарт качества с 2004 г.'}</div>
       </div>
     </div>
@@ -458,6 +458,34 @@ function renderAbout(){
       </div>
     </div>
   `;
+  animateStats();
+}
+
+function animateStats(){
+  const els = document.querySelectorAll('.stat-num[data-target]');
+  els.forEach(el => {
+    const target = parseInt(el.getAttribute('data-target'), 10);
+    const suffix = el.getAttribute('data-suffix') || '';
+    const isSpaced = el.getAttribute('data-format') === 'spaced';
+    const duration = 1600;
+    const start = performance.now();
+    el.textContent = '0' + suffix;
+
+    function step(now){
+      const progress = Math.min((now - start) / duration, 1);
+      // easeOutExpo
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = Math.floor(ease * target);
+      let formatted = isSpaced ? current.toLocaleString('ru-RU').replace(/,/g, ' ') : current.toString();
+      el.textContent = formatted + suffix;
+      if(progress < 1) requestAnimationFrame(step);
+      else {
+        let finalVal = isSpaced ? target.toLocaleString('ru-RU').replace(/,/g, ' ') : target.toString();
+        el.textContent = finalVal + suffix;
+      }
+    }
+    requestAnimationFrame(step);
+  });
 }
 
 $('#about-link').onclick=()=>go('about');$('#guide-link').onclick=()=>go('guide');$('#catalog-link').onclick=()=>go('catalog');$('.brand').onclick=e=>{e.preventDefault();go('catalog')};$('#cart-link').onclick=()=>go('cart');$('#product-dialog .close').onclick=()=>$('#product-dialog').close();$('#language').onchange=e=>{state.lang=e.target.value;try{localStorage.setItem('elx-client-language',JSON.stringify(state.lang))}catch{}render();if($('#product-dialog').open)detail($('#product-detail').dataset.id)};render();
