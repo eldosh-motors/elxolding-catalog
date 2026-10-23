@@ -57,6 +57,7 @@ function directionButtons(){
   if(!layout){
     const tools=$('.tools');
     const displayOptions=$('#display-options');
+    const displayOptionsBottom=$('#display-options-bottom');
     const results=$('#results');
     
     layout=document.createElement('div');
@@ -72,6 +73,7 @@ function directionButtons(){
     tools.parentNode.insertBefore(layout,tools);
     layout.append(sidebar,content);
     content.append(tools,displayOptions,results);
+    if(displayOptionsBottom) content.append(displayOptionsBottom);
   }
   
   const sidebar=$('#catalog-sidebar');
