@@ -420,25 +420,25 @@ function renderAbout(){
 
     <section class="about-certs-block">
       <h2>${uz?'Sertifikatlar va sifat kafolati':'Сертификаты и гарантия качества'}</h2>
-      <p class="certs-desc">${uz?'Barcha mahsulotlar O‘zbekiston Respublikasi standartlariga va xalqaro ISO 9001 sifat talablariga to‘liq javob beradi.':'Вся производимая продукция сертифицирована в соответствии с национальными и международными стандартами качества ISO 9001:2015.'}</p>
+      <p class="certs-desc">${uz?'Barcha mahsulotlar O‘zbekiston Respublikasi standartlariga va xalqaro ISO 9001 sifat talablariga to‘liq javob beradi.':'Вся производимая продукция сертифицирована в соответствии с национальными стандартами Республики Узбекистан и международными требованиями качества ISO 9001:2015.'}</p>
       <div class="certs-grid">
         <div class="cert-card">
           <div class="cert-img-wrap" style="cursor:zoom-in;">
-            <img src="assets/certificates/2TVGG02023100Zert_ru_1.png" alt="Сертификат соответствия ISO 9001:2015 TIC" loading="lazy" onerror="this.src='assets/certificates/cert-iso-ru.png'">
+            <img src="assets/certificates/cert-conformity-uz-2026.jpg" alt="Сертификат соответствия O'z DSt ISO 9001:2015" loading="lazy" onerror="this.src='assets/certificates/photo_2026-10-23_17-25-06.jpg'">
           </div>
           <div class="cert-meta">
-            <strong>${uz?'ISO 9001:2015 TIC (RU)':'Сертификат ISO 9001:2015 TIC'}</strong>
-            <span>${uz?'Xalqaro sifat menejmenti tizimi sertifikati (TÜV Thüringen)':'Международный сертификат менеджмента качества TÜV Thüringen'}</span>
+            <strong>${uz?'Muvofiqlik sertifikati (O‘z DSt ISO 9001:2015)':'Сертификат соответствия (O‘z DSt ISO 9001:2015)'}</strong>
+            <span>${uz?'O‘zbekiston Respublikasi Sertifikatlashtirish milliy tizimi · Sert Management (2026–2029)':'Национальная система сертификации Республики Узбекистан · Орган по сертификации «SERT MANAGEMENT» (действителен до 11.02.2029)'}</span>
           </div>
         </div>
 
         <div class="cert-card">
           <div class="cert-img-wrap" style="cursor:zoom-in;">
-            <img src="assets/certificates/photo_2026-10-23_17-25-06.jpg" alt="Сертификат соответствия ELXOLDING" loading="lazy" onerror="this.src='assets/certificates/cert-conformity-uz.png'">
+            <img src="assets/certificates/cert-iso-tic-2023.png" alt="Сертификат соответствия ISO 9001:2015 TIC TÜV Thüringen" loading="lazy" onerror="this.src='assets/certificates/2TVGG02023100Zert_ru_1.png'">
           </div>
           <div class="cert-meta">
-            <strong>${uz?'Muvofiqlik sertifikati':'Сертификат соответствия'}</strong>
-            <span>${uz?'O‘zbekiston Respublikasi Milliy sertifikatlashtirish tizimi':'Национальная система сертификации продукции'}</span>
+            <strong>${uz?'Xalqaro sertifikat ISO 9001:2015 TIC':'Международный сертификат ISO 9001:2015 TIC'}</strong>
+            <span>${uz?'Menejment tizimi muvofiqligi · TÜV Thüringen e.V. (Germaniya / IAF / DAkkS)':'Соответствие системы менеджмента стандарту ISO 9001:2015 · TÜV Thüringen e.V. (Германия / IAF / DAkkS)'}</span>
           </div>
         </div>
       </div>
