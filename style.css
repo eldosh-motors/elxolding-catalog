@@ -1641,13 +1641,16 @@ html.a11y-no-images #hero-slider {
   height: 100%;
   opacity: 0;
   visibility: hidden;
-  transition: opacity .5s ease, visibility .5s;
+  transform: scale(1.03);
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.2s;
   cursor: pointer;
   background: #092237;
+  will-change: opacity, transform;
 }
 .hero-slide.active {
   opacity: 1;
   visibility: visible;
+  transform: scale(1);
   z-index: 1;
 }
 .hero-banner-img {

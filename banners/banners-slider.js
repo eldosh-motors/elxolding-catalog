@@ -91,8 +91,17 @@
       }
     }
 
-    slider.addEventListener('mouseenter', () => clearInterval(bannerTimer));
-    slider.addEventListener('mouseleave', resetTimer);
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    slider.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    slider.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchEndX < touchStartX - 40) nextSlide();
+      else if (touchEndX > touchStartX + 40) prevSlide();
+    }, { passive: true });
 
     resetTimer();
   }
